@@ -34,7 +34,7 @@ public class StringManipulator
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UtilityLibraries;
 
-namespace StringLibraryTest;
+namespace StringManipulatorTest;
 
 [TestClass]
 public class UnitTest1
@@ -49,10 +49,10 @@ public class UnitTest1
         Dictionary<string, int> freqValues = FreqCounter("You're the test that Wants to test");
         for (int i = 0; i < testCases; i++)
         {
-            Assert.IsTrue(freqValues[words[i]] == values[i],
+            int result = freqValues[words[i]];
+            Assert.IsTrue(result == values[i],
                    string.Format("Expected for word count '{0}' to be {1}, but got {2}",
-                                 words[i], values[i], freqValues[words[i]]));
+                                 words[i], values[i], result));
         }
     }
-}
 }
