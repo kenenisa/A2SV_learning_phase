@@ -6,16 +6,13 @@ using System.Collections.Generic;
 
 public class Shape
 {
-    public String name;
-    public virtual double CalculateArea()
-    {
-        return 0;
-    }
+    public string Name { get; set; }
+    public virtual double CalculateArea(){return 0;}
 
 }
 public class Circle : Shape
 {
-    public double Radius;
+    public double Radius { get; set; }
     public override double CalculateArea()
     {
         return Radius * Radius * 3.142;
@@ -23,8 +20,8 @@ public class Circle : Shape
 }
 public class Rectangle : Shape
 {
-    public double Width;
-    public double Height;
+    public double Width { get; set; }
+    public double Height { get; set; }
     public override double CalculateArea()
     {
         return Width * Height;
@@ -32,8 +29,8 @@ public class Rectangle : Shape
 }
 public class Triangle : Shape
 {
-    public double Base;
-    public double Height;
+    public double Base { get; set; }
+    public double Height { get; set; }
     public override double CalculateArea()
     {
         return 0.5 * Base * Height;
@@ -43,7 +40,7 @@ public class Program
 {
     public static void PrintShapeArea(Shape shape)
     {
-        Console.WriteLine("Name: " + shape.name);
+        Console.WriteLine("Name: " + shape.Name);
         Console.WriteLine("Area: " + shape.CalculateArea());
     }
     public static void Main()
