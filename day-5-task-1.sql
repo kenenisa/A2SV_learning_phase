@@ -31,3 +31,23 @@ WHERE salary > (
     FROM Employee manager
     WHERE manager.id = employee.managerId
 );
+
+# Question 6: https://leetcode.com/problems/consecutive-numbers/description/
+SELECT DISTINCT num AS ConsecutiveNums 
+FROM Logs
+WHERE 
+(id+1,num) IN (SELECT * FROM Logs)
+AND
+(id+2,num) in (SELECT * FROM Logs)
+
+# Question 7: https://leetcode.com/problems/department-highest-salary/submissions/1058935334/
+SELECT D.name AS Department, E.name AS Employee, E.salary AS Salary
+FROM (SELECT * FROM Employee
+WHERE (salary,departmentId) in (SELECT * FROM (
+  SELECT MAX(salary) AS salary,departmentId FROM Employee
+  GROUP BY departmentId
+) AS X)) AS E
+LEFT JOIN Department AS D
+ON E.departmentId = D.id;
+
+
